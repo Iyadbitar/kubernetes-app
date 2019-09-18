@@ -2,13 +2,13 @@ docker build -t iyadbitar/multi-client:latest -t iyadbitar/multi-client:$SHA -f 
 docker build -t iyadbitar/multi-server:latest -t iyadbitar/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t iyadbitar/multi-worker:latest -t iyadbitar/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
-docker push multi-client:latest
-docker push multi-server:latest
-docker push multi-worker:latest
+docker push iyadbitar/multi-client:latest
+docker push iyadbitar/multi-server:latest
+docker push iyadbitar/multi-worker:latest
 
-docker push multi-client:$SHA
-docker push multi-server:$SHA
-docker push multi-worker:$SHA
+docker push iyadbitar/multi-client:$SHA
+docker push iyadbitar/multi-server:$SHA
+docker push iyadbitar/multi-worker:$SHA
 
 kubectl apply -f k8s
 kubectl set image deployments/client-deployment client=iyadbitar/multi-client:$SHA
